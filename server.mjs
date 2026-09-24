@@ -41,7 +41,7 @@ const PORT = Number(getFlag("--port") || process.env.PORT || 8000);
 const HOST = "127.0.0.1";
 const OPEN_BROWSER = !argv.includes("--no-open");
 
-const APP_ENTRY = "/index.html";
+const APP_ENTRY = "/app/index.html";
 
 const MIME = {
   ".html": "text/html; charset=utf-8",

@@ -13,7 +13,7 @@ node -e "fetch('http://127.0.0.1:8000/api/health').then(r=>process.exit(r.ok?0:1
 if not errorlevel 1 goto already_running
 
 echo Starting My Memory. Keep this window open while using the app.
-echo The app will open at http://localhost:8000/index.html
+echo The app will open at http://localhost:8000/app/index.html
 node server.mjs
 set "SERVER_EXIT=%ERRORLEVEL%"
 if not "%SERVER_EXIT%"=="0" (
@@ -25,7 +25,7 @@ exit /b %SERVER_EXIT%
 
 :already_running
 echo My Memory is already running. Opening the app...
-start "" "http://localhost:8000/index.html"
+start "" "http://localhost:8000/app/index.html"
 exit /b 0
 
 :no_node

@@ -13,6 +13,22 @@ GitHub Pages يستضيف ملفات ثابتة فقط؛ لا يشغّل `/api/c
 
 الملف `api/chat.js` يُنشر كدالة Node.js على Vercel، ويستدعي عميل DeepSeek وPoW في `lib/`. إعداد `vercel.json` يمنح الطلب وقتًا أقصى قدره 120 ثانية. صفحة التطبيق وملفاتها الثابتة تُخدم من جذر المشروع.
 
+## هيكل الموقع
+
+- `/` الموقع التعريفي (`index.html`)
+- `/app/` التطبيق (`app/index.html`، مع `manifest.json` و`sw.js`)
+- `/api/chat` دالة DeepSeek على Vercel
+
+## النشر من PowerShell (دون Node.js أو Git)
+
+أنشئ رمزًا من https://vercel.com/account/tokens ثم شغّل من جذر المشروع:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/deploy-vercel.ps1
+```
+
+يطلب السكربت الرمز بشكل مخفي، ويرفع الملفات، وينتظر حتى يصبح النشر جاهزًا، ثم يطبع رابط الموقع ورابط التطبيق.
+
 ## البيانات والخصوصية
 
 يحفظ التطبيق المهام والمجلدات والمحادثة وUserToken في `localStorage` بالمتصفح على جهازك. عند استخدام DeepSeek، يرسل التطبيق الرسالة والمجلدات والمهام الحديثة والتفضيلات وآخر رسائل المحادثة إلى دالة Vercel، ومنها إلى DeepSeek. لا تضع UserToken داخل ملفات المستودع أو الشيفرة.

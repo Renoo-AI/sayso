@@ -180,7 +180,7 @@ self.addEventListener('fetch', event => {
       const cache = await caches.open(SHELL_CACHE);
       const hit = await cache.match('./index.html');
       if (hit) return hit;
-      return new Response('Offline — reopen My Memory when you have signal.', {
+      return new Response('Offline — reopen SaySo when you have signal.', {
         status: 503, headers: { 'Content-Type': 'text/plain' }
       });
     }

@@ -1,0 +1,9 @@
+.build-tools
+android
+download-site
+scripts
+.claude
+*.zip
+*.apk
+run_app.bat
+server.mjs

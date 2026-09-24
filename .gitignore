@@ -3,3 +3,9 @@ node_modules/
 .env
 .env.*
 !.env.example
+.build-tools/
+android/build/
+android/assets/
+android/signing/
+download-site/
+.claude/

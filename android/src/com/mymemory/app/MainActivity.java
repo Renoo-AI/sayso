@@ -19,6 +19,7 @@ import java.util.concurrent.*;
 public class MainActivity extends Activity {
     private static final String ORIGIN = "https://memory.local";
     private WebView web;
+    private android.widget.FrameLayout frame;
     private SpeechRecognizer recognizer;
     private String pendingLanguage;
     private final ExecutorService network = Executors.newFixedThreadPool(2);
@@ -27,16 +28,20 @@ public class MainActivity extends Activity {
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
         ReminderReceiver.channel(this);
+        // A WebView ignores its own padding, so the system-bar insets go on a wrapper instead.
+        frame = new android.widget.FrameLayout(this);
         web = new WebView(this);
-        setContentView(web);
+        frame.addView(web, new android.widget.FrameLayout.LayoutParams(-1, -1));
+        setContentView(frame);
         applyBars((getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES);
-        web.setOnApplyWindowInsetsListener((v, insets) -> {
-            if (Build.VERSION.SDK_INT >= 30) {
-                android.graphics.Insets b = insets.getInsets(android.view.WindowInsets.Type.systemBars() | android.view.WindowInsets.Type.ime());
+        if (Build.VERSION.SDK_INT >= 30) {
+            getWindow().setDecorFitsSystemWindows(false);
+            frame.setOnApplyWindowInsetsListener((v, insets) -> {
+                android.graphics.Insets b = insets.getInsets(android.view.WindowInsets.Type.systemBars() | android.view.WindowInsets.Type.displayCutout() | android.view.WindowInsets.Type.ime());
                 v.setPadding(b.left, b.top, b.right, b.bottom);
-            }
-            return insets;
-        });
+                return android.view.WindowInsets.CONSUMED;
+            });
+        }
         WebSettings s = web.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
@@ -76,6 +81,7 @@ public class MainActivity extends Activity {
         getWindow().setStatusBarColor(bg);
         getWindow().setNavigationBarColor(bg);
         web.setBackgroundColor(bg);
+        frame.setBackgroundColor(bg);
         if (Build.VERSION.SDK_INT >= 30) {
             android.view.WindowInsetsController c = getWindow().getInsetsController();
             int light = android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS | android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;

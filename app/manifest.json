@@ -1,16 +1,21 @@
 {
+  "id": "/app/",
   "name": "SaySo",
   "short_name": "SaySo",
-  "description": "Keep personal tasks, ideas, and reminders in one place.",
-  "id": "/app/",
+  "description": "Say it once. Your AI memory for tasks, plans and reminders, in English and Arabic.",
+  "lang": "en",
+  "dir": "auto",
   "start_url": "/app/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#FDFBF7",
   "theme_color": "#FDFBF7",
+  "categories": ["productivity", "lifestyle", "utilities"],
   "icons": [
-    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
-    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+    { "src": "/app/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/app/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }

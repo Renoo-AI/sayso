@@ -7,7 +7,21 @@
 <meta name="theme-color" content="#FDFBF7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="SaySo">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23FF6B4A'/%3E%3Cpath%20d='M28%2013%2016%207%204%2013l12%206%2012-6z'%20fill='%23fff'/%3E%3Cpath%20d='M9%2016.5V21c0%202%203.1%203.5%207%203.5s7-1.5%207-3.5v-4.5'%20fill='none'%20stroke='%23fff'%20stroke-width='2.4'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="description" content="SaySo: say it once and it's saved. Your AI memory for tasks, plans and reminders, in English and Arabic.">
+<link rel="canonical" href="https://saysoapp.vercel.app/app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SaySo">
+<meta property="og:url" content="https://saysoapp.vercel.app/app/">
+<meta property="og:title" content="SaySo — The AI that remembers for you">
+<meta property="og:description" content="Say it once. Tasks, plans and reminders — in English and Arabic.">
+<meta property="og:image" content="https://saysoapp.vercel.app/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://saysoapp.vercel.app/og.jpg">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <script>
 /* Theme engine: runs before first paint so dark mode never flashes light. */
@@ -877,7 +891,7 @@ const MONS = { 'jan':0, 'feb':1, 'mar':2, 'apr':3, 'may':4, 'jun':5, 'jul':6, 'a
 /* Set once the service worker registers. Everything notification-related is
    gated on it, so the app still works perfectly if sw.js is missing. */
 let swReg = null;
-const NOTIF_ICON = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23FF6B4A'/%3E%3Cpath%20d='M28%2013%2016%207%204%2013l12%206%2012-6z'%20fill='%23fff'/%3E%3Cpath%20d='M9%2016.5V21c0%202%203.1%203.5%207%203.5s7-1.5%207-3.5v-4.5'%20fill='none'%20stroke='%23fff'%20stroke-width='2.4'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E";
+const NOTIF_ICON = new URL('icon-192.png', location.href).href;
 
 const saveTasks = () => { localStorage.setItem('sm_tasks', JSON.stringify(tasks)); syncTasksToSW(); };
 const saveChat  = () => { localStorage.setItem('sm_chats', JSON.stringify(chats)); localStorage.setItem('sm_active_chat', activeChatId); };

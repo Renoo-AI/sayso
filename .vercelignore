@@ -7,3 +7,4 @@ scripts
 *.apk
 run_app.bat
 server.mjs
+!downloads/sayso.apk

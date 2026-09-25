@@ -25,7 +25,16 @@ Invoke-Checked "$jdk/bin/java.exe" @('-cp',"$buildTools/lib/d8.jar",'com.android
 Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
 Copy-Item -LiteralPath "$build/resources.apk" -Destination "$build/unsigned.apk" -Force
 $zip = [System.IO.Compression.ZipFile]::Open("$build/unsigned.apk",[System.IO.Compression.ZipArchiveMode]::Update)
-try { [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip,"$build/dex/classes.dex",'classes.dex') | Out-Null } finally { $zip.Dispose() }
+try {
+    [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip,"$build/dex/classes.dex",'classes.dex') | Out-Null
+    # aapt2 on Windows stores nested assets as "assets/lib\x.js"; Android only finds "assets/lib/x.js".
+    foreach ($entry in @($zip.Entries | Where-Object { $_.FullName.Contains('\') })) {
+        $data = New-Object System.IO.MemoryStream
+        $in = $entry.Open(); $in.CopyTo($data); $in.Dispose()
+        $name = $entry.FullName.Replace('\','/'); $entry.Delete()
+        $out = $zip.CreateEntry($name).Open(); $data.Position = 0; $data.CopyTo($out); $out.Dispose()
+    }
+} finally { $zip.Dispose() }
 Invoke-Checked "$buildTools/zipalign.exe" @('-f','-p','4',"$build/unsigned.apk","$build/aligned.apk")
 if (!(Test-Path "$signing/release.jks")) {
     if (!(Test-Path "$signing/password.txt")) { [Convert]::ToBase64String([System.Security.Cryptography.RandomNumberGenerator]::GetBytes(36)) | Set-Content "$signing/password.txt" }
@@ -39,6 +48,8 @@ try {
 Invoke-Checked "$jdk/bin/java.exe" @('-jar',"$buildTools/lib/apksigner.jar",'verify','--verbose',"$build/my-memory.apk")
 Invoke-Checked "$buildTools/zipalign.exe" @('-c','4',"$build/my-memory.apk")
 Copy-Item "$build/my-memory.apk" "$root/download-site/dist/my-memory.apk" -Force
+New-Item -ItemType Directory -Force "$root/downloads" | Out-Null
+Copy-Item "$build/my-memory.apk" "$root/downloads/sayso.apk" -Force
 $apk = Get-Item "$build/my-memory.apk"
 $hash = (Get-FileHash $apk.FullName -Algorithm SHA256).Hash.ToLower()
 @{version='1.0.0';minAndroid='8.0';sizeBytes=$apk.Length;sizeLabel=('{0:N1} MB' -f ($apk.Length / 1MB));sha256=$hash;file='my-memory.apk'} | ConvertTo-Json | Set-Content -Encoding utf8 "$root/download-site/dist/release.json"

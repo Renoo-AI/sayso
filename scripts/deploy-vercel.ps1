@@ -13,7 +13,7 @@ if (-not $token) {
 if (-not $token) { throw 'No token given.' }
 $headers = @{ Authorization = "Bearer $token" }
 
-$paths = @('index.html', 'vercel.json', 'package.json') +
+$paths = @('index.html', 'vercel.json', 'package.json', 'downloads/sayso.apk') +
   (Get-ChildItem app, api, lib -Recurse -File | ForEach-Object { $_.FullName.Substring($root.Length + 1) })
 $files = foreach ($p in $paths) {
   @{ file = $p.Replace('\', '/'); data = [Convert]::ToBase64String([IO.File]::ReadAllBytes((Join-Path $root $p))); encoding = 'base64' }

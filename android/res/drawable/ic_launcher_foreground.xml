@@ -1,0 +1,7 @@
+<!-- Same artwork as app/icon.svg: its 512-unit canvas maps onto the 72dp visible area of the 108dp layer. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+  <group android:scaleX="0.140625" android:scaleY="0.140625" android:translateX="18" android:translateY="18">
+    <path android:fillColor="#FFFFFFFF" android:pathData="M256,112C345,112 418,170 418,246S345,380 256,380C240,380 224,378 209,375L146,414C138,419 128,412 131,403L146,352C115,327 94,289 94,246C94,170 167,112 256,112Z"/>
+    <path android:fillColor="#FFF0502F" android:pathData="M168,221a13,13 0,0 1,13 13v24a13,13 0,0 1,-26 0v-24a13,13 0,0 1,13 -13z M212,194a13,13 0,0 1,13 13v78a13,13 0,0 1,-26 0v-78a13,13 0,0 1,13 -13z M256,176a13,13 0,0 1,13 13v114a13,13 0,0 1,-26 0v-114a13,13 0,0 1,13 -13z M300,202a13,13 0,0 1,13 13v62a13,13 0,0 1,-26 0v-62a13,13 0,0 1,13 -13z M344,218a13,13 0,0 1,13 13v30a13,13 0,0 1,-26 0v-30a13,13 0,0 1,13 -13z"/>
+  </group>
+</vector>

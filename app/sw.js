@@ -29,7 +29,7 @@ const SHELL_CACHE = 'sm-shell-v1';   // the app itself, so it opens offline
 const STATE_CACHE = 'sm-state-v1';   // the task list, for background checks
 const STATE_KEY   = 'sm-state';      // resolves relative to this script's folder
 
-const ICON = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23FF6B4A'/%3E%3Cpath%20d='M28%2013%2016%207%204%2013l12%206%2012-6z'%20fill='%23fff'/%3E%3Cpath%20d='M9%2016.5V21c0%202%203.1%203.5%207%203.5s7-1.5%207-3.5v-4.5'%20fill='none'%20stroke='%23fff'%20stroke-width='2.4'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E";
+const ICON = new URL('icon-192.png', self.location).href;
 
 /* ── lifecycle ───────────────────────────────────────────────────────────── */
 

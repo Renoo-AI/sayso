@@ -4,13 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SaySo — The AI that remembers for you</title>
-<meta name="description" content="Say it once. SaySo turns what you say into tasks, plans your day, repeats what needs repeating and reminds you on time. Arabic and English.">
+<meta name="description" content="Say it once. SaySo turns what you say into tasks, plans your day, repeats what needs repeating and reminds you on time. Free, private, in English and Arabic.">
+<link rel="canonical" href="https://saysoapp.vercel.app/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="application-name" content="SaySo">
+<meta name="apple-mobile-web-app-title" content="SaySo">
+<meta name="format-detection" content="telephone=no">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SaySo">
+<meta property="og:url" content="https://saysoapp.vercel.app/">
+<meta property="og:title" content="SaySo — The AI that remembers for you">
+<meta property="og:description" content="Say it once. SaySo turns what you say into tasks, plans your day and reminds you on time — in English and Arabic.">
+<meta property="og:image" content="https://saysoapp.vercel.app/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SaySo turning spoken sentences into tasks: Gym session, Math exam, Call mom">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_AR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SaySo — The AI that remembers for you">
+<meta name="twitter:description" content="Say it once. Tasks, plans and reminders — in English and Arabic.">
+<meta name="twitter:image" content="https://saysoapp.vercel.app/og.jpg">
+<meta name="twitter:image:alt" content="SaySo turning spoken sentences into tasks: Gym session, Math exam, Call mom">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://saysoapp.vercel.app/#website",
+      "url": "https://saysoapp.vercel.app/",
+      "name": "SaySo",
+      "inLanguage": ["en", "ar"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://saysoapp.vercel.app/#app",
+      "name": "SaySo",
+      "url": "https://saysoapp.vercel.app/app/",
+      "downloadUrl": "https://saysoapp.vercel.app/downloads/sayso.apk",
+      "image": "https://saysoapp.vercel.app/og.jpg",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Android, Web",
+      "inLanguage": ["en", "ar"],
+      "description": "An AI memory and task agent. Speak or type anything and SaySo turns it into tasks, plans your day, repeats what needs repeating and reminds you on time.",
+      "featureList": ["Voice capture", "AI task agent with undo", "Repeating tasks", "Day planning", "Reminders", "Dark mode and accent colors", "Works offline", "English and Arabic"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+  ]
+}
+</script>
 <meta name="theme-color" content="#0A0A0B">
 <script>
 (()=>{const m=localStorage.getItem('sm_theme')||'system';const dark=m==='dark'||(m==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=dark?'dark':'light';})();
 </script>
 <link rel="manifest" href="/app/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/svg+xml" href="/app/icon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -64,7 +119,7 @@ button { font:inherit; color:inherit; }
 /* NAV */
 .nav { position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:60; width:min(calc(100% - 28px), 920px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:9px 9px 9px 20px; border-radius:18px; background:var(--nav-bg); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(1.4); -webkit-backdrop-filter:blur(18px) saturate(1.4); }
 .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.03em; font-size:19px; } .brand b, .s-logo b { color:var(--orange); font-weight:800; }
-.brand-mark { width:26px; height:26px; border-radius:8px; background:radial-gradient(circle at 35% 30%, #FFD0BF 0%, #FF8A6B 35%, #FF6B4A 70%); box-shadow:0 0 18px rgba(255,107,74,.55); }
+.brand-mark { width:28px; height:28px; border-radius:8px; box-shadow:0 0 18px rgba(255,107,74,.45); }
 .nav-links { display:flex; align-items:center; gap:26px; font-size:14px; font-weight:500; color:var(--ink-2); }
 .nav-links a:hover { color:var(--ink); }
 .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; border:none; cursor:pointer; font-weight:600; font-size:15px; border-radius:14px; padding:14px 22px; transition:transform .15s, box-shadow .25s, background .2s, border-color .2s; white-space:nowrap; }
@@ -330,7 +385,7 @@ footer .wrap { display:flex; justify-content:space-between; align-items:center; 
 <body>
 
 <nav class="nav" id="nav">
-  <a href="#" class="brand"><span class="brand-mark"></span><span>Say<b>So</b></span></a>
+  <a href="#" class="brand"><img class="brand-mark" src="/app/icon.svg" alt="" width="28" height="28"><span>Say<b>So</b></span></a>
   <div class="nav-links">
     <a href="#agent">Agent</a>
     <a href="#app">App</a>
@@ -348,7 +403,7 @@ footer .wrap { display:flex; justify-content:space-between; align-items:center; 
     <h1 class="rv">The AI that <span class="serif">remembers</span> so you don't have to.</h1>
     <p class="hero-sub rv">Say it once, in English or Arabic. SaySo turns it into tasks, plans your day, repeats what needs repeating and reminds you right on time.</p>
     <div class="hero-cta rv">
-      <a href="#install" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>Install SaySo. It's free</a>
+      <a href="#install" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>Get SaySo. It's free</a>
       <a href="/app/" class="btn btn-ghost">Try it in your browser →</a>
     </div>
     <div class="hero-note rv">No account · No app store · Works offline</div>
@@ -523,14 +578,14 @@ footer .wrap { display:flex; justify-content:space-between; align-items:center; 
     <div class="install rv">
       <div class="eyebrow">Get SaySo</div>
       <h2>Your memory, <span class="serif">upgraded</span>.</h2>
-      <p class="sub">Install it straight from your browser. It gets its own icon, opens full screen and works offline.</p>
+      <p class="sub">Download the Android app, or open SaySo in your browser.</p>
       <div class="hero-cta">
-        <button class="btn btn-primary" id="installBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg><span id="installLabel">Install SaySo</span></button>
+        <a class="btn btn-primary" href="/downloads/sayso.apk" download="sayso.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg><span>Download Android APK</span></a>
         <a href="/app/" class="btn btn-ghost">Open in browser</a>
       </div>
       <div class="inote" id="installNote"></div>
       <div class="plats">
-        <div class="pl" id="pl-android"><b>Android</b><span>In <em>Chrome</em>, tap Install above, or <em>⋮ → Install app</em>.</span></div>
+        <div class="pl" id="pl-android"><b>Android</b><span>Tap <em>Download Android APK</em>, then open the downloaded file to install. Android 8.0 or newer.</span></div>
         <div class="pl" id="pl-ios"><b>iPhone &amp; iPad</b><span>In <em>Safari</em>, tap <em>Share → Add to Home Screen</em>.</span></div>
         <div class="pl" id="pl-desktop"><b>Windows &amp; Mac</b><span>In <em>Chrome</em> or <em>Edge</em>, click the install icon in the address bar.</span></div>
       </div>
@@ -540,7 +595,7 @@ footer .wrap { display:flex; justify-content:space-between; align-items:center; 
 
 <footer>
   <div class="wrap">
-    <a href="#" class="brand"><span class="brand-mark"></span><span>Say<b>So</b></span></a>
+    <a href="#" class="brand"><img class="brand-mark" src="/app/icon.svg" alt="" width="28" height="28"><span>Say<b>So</b></span></a>
     <div class="fl-links"><a href="#agent">Agent</a><a href="#app">App</a><a href="#how">How it works</a><a href="/app/">Open app</a></div>
     <span>© <span id="yr"></span> SaySo</span>
   </div>
@@ -647,25 +702,6 @@ async function runDemo() {
 }
 runDemo();
 
-/* INSTALL */
-const installBtn = document.getElementById('installBtn'), installLabel = document.getElementById('installLabel'), installNote = document.getElementById('installNote');
-const ua = navigator.userAgent;
-const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-document.getElementById(isIOS ? 'pl-ios' : /Android/.test(ua) ? 'pl-android' : 'pl-desktop').classList.add('hl');
-let deferredPrompt = null;
-if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) { installLabel.textContent = 'Already installed'; installBtn.disabled = true; installBtn.style.opacity = '.6'; }
-addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; installNote.textContent = 'Ready to install. One tap.'; });
-addEventListener('appinstalled', () => { deferredPrompt = null; installLabel.textContent = 'Installed ✓'; installNote.textContent = 'SaySo is on your home screen.'; });
-installBtn.addEventListener('click', async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    deferredPrompt = null;
-    installNote.textContent = outcome === 'accepted' ? 'Installing SaySo…' : 'No problem. You can install it any time.';
-    return;
-  }
-  installNote.textContent = isIOS ? 'In Safari: tap Share, then “Add to Home Screen”.' : 'Use your browser menu → “Install app”. If you don’t see it, open SaySo first and install from there.';
-});
 </script>
 </body>
 </html>

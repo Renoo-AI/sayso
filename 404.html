@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not found — SaySo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="/app/icon.svg">
+<script>(()=>{const m=localStorage.getItem('sm_theme')||'system';document.documentElement.dataset.theme=m==='dark'||(m==='system'&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#0A0A0B; --ink:#F4F1EB; --ink-2:#A8A39B; --line:rgba(255,255,255,.14); --orange:#FF6B4A; color-scheme:dark; }
+:root[data-theme="light"] { --bg:#FAF8F4; --ink:#111111; --ink-2:#57534D; --line:rgba(17,17,17,.15); color-scheme:light; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:24px; text-align:center; font-family:'Geist', system-ui, sans-serif; background:radial-gradient(ellipse 60% 45% at 50% 35%, rgba(255,107,74,.22), transparent 70%), var(--bg); color:var(--ink); }
+img { width:72px; height:72px; margin-bottom:28px; }
+h1 { font-size:clamp(40px, 8vw, 72px); font-weight:700; letter-spacing:-.05em; line-height:1; }
+h1 em { font-family:'Instrument Serif', serif; font-weight:400; color:var(--orange); }
+p { color:var(--ink-2); font-size:17px; margin:18px auto 32px; max-width:420px; line-height:1.6; }
+.row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+a { text-decoration:none; font-weight:600; font-size:15px; padding:13px 20px; border-radius:14px; }
+.primary { background:var(--orange); color:#140804; }
+.ghost { border:1px solid var(--line); color:var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <img src="/app/icon.svg" alt="SaySo">
+  <h1>This page didn't <em>stick</em>.</h1>
+  <p>Unlike your tasks, this link isn't something we remembered. Head back and try again.</p>
+  <div class="row"><a class="primary" href="/">Go to SaySo</a><a class="ghost" href="/app/">Open the app</a></div>
+</main>
+</body>
+</html>

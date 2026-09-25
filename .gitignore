@@ -7,5 +7,4 @@ node_modules/
 android/build/
 android/assets/
 android/signing/
-download-site/
 .claude/

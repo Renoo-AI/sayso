@@ -47,10 +47,5 @@ try {
 } finally { Remove-Item Env:MEMORY_SIGN_PASSWORD -ErrorAction SilentlyContinue }
 Invoke-Checked "$jdk/bin/java.exe" @('-jar',"$buildTools/lib/apksigner.jar",'verify','--verbose',"$build/my-memory.apk")
 Invoke-Checked "$buildTools/zipalign.exe" @('-c','4',"$build/my-memory.apk")
-Copy-Item "$build/my-memory.apk" "$root/download-site/dist/my-memory.apk" -Force
-New-Item -ItemType Directory -Force "$root/downloads" | Out-Null
-Copy-Item "$build/my-memory.apk" "$root/downloads/sayso.apk" -Force
 $apk = Get-Item "$build/my-memory.apk"
-$hash = (Get-FileHash $apk.FullName -Algorithm SHA256).Hash.ToLower()
-@{version='1.0.0';minAndroid='8.0';sizeBytes=$apk.Length;sizeLabel=('{0:N1} MB' -f ($apk.Length / 1MB));sha256=$hash;file='my-memory.apk'} | ConvertTo-Json | Set-Content -Encoding utf8 "$root/download-site/dist/release.json"
 Write-Output "Signed APK ready: $($apk.FullName) ($($apk.Length) bytes)"

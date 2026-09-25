@@ -1,4 +1,8 @@
-# My Memory
+# SaySo
+
+- الموقع: https://saysoapp.vercel.app
+- التطبيق: https://saysoapp.vercel.app/app/
+- تطبيق أندرويد: https://github.com/Renoo-AI/sayso/releases/download/sayso/SaySo.apk
 
 مساعد شخصي لتنظيم المهام والمجلدات والتذكيرات، مع محادثة DeepSeek وإدخال صوتي من المتصفح.
 
@@ -19,15 +23,15 @@ GitHub Pages يستضيف ملفات ثابتة فقط؛ لا يشغّل `/api/c
 - `/app/` التطبيق (`app/index.html`، مع `manifest.json` و`sw.js`)
 - `/api/chat` دالة DeepSeek على Vercel
 
-## النشر من PowerShell (دون Node.js أو Git)
+## النشر
 
-أنشئ رمزًا من https://vercel.com/account/tokens ثم شغّل من جذر المشروع:
+المستودع مربوط بـ Vercel: كل دفع (push) إلى `main` يُنشر تلقائيًا. Git محمول موجود في `.build-tools/git`:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts/deploy-vercel.ps1
+.build-tools\git\cmd\git.exe add -A; .build-tools\git\cmd\git.exe commit -m "update"; .build-tools\git\cmd\git.exe push
 ```
 
-يطلب السكربت الرمز بشكل مخفي، ويرفع الملفات، وينتظر حتى يصبح النشر جاهزًا، ثم يطبع رابط الموقع ورابط التطبيق.
+لإصدار APK جديد: شغّل `scripts/build-android.ps1`، ثم ارفع `android/build/my-memory.apk` باسم `SaySo.apk` إلى إصدار `sayso` على GitHub.
 
 ## البيانات والخصوصية
 
